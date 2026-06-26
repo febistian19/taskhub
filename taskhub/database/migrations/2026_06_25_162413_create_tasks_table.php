@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             // FK ke projects — kalau project dihapus, task-nya ikut terhapus
- $table->foreignId('project_id')->constrained()->onDelete('cascade');
- // FK ke users — siapa yang membuat task ini
- $table->foreignId('user_id')->constrained()->onDelete('cascade');
- $table->string('title'); // judul task, wajib ada
- $table->text('description')->nullable(); // detail task, boleh kosong
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            // FK ke users — siapa yang membuat task ini
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title'); // judul task, wajib ada
+            $table->text('description')->nullable(); // detail task, boleh kosong
             $table->timestamps();
         });
     }

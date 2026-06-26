@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- @yield('title') diisi dari setiap halaman anak --}}
     <title>{{ config('app.name') }} — @yield('title', 'Dashboard')</title>
+
     {{-- Load Tailwind CSS + Alpine.js via Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
@@ -60,7 +61,7 @@ shrink-0"
             </a>
 
             {{-- Projects --}}
-            @if (Route::has('tasks.index'))
+            @if (Route::has('projects.index'))
                 <a href="{{ route('projects.index') }}"
                     class="flex items-center gap-[11px] px-3 py-[9px] rounded-[10px]
  text-[13.5px] font-medium mb-[2px] transition-all
@@ -148,8 +149,7 @@ shrink-0"
                     @csrf
                     <button type="submit"
                         class="text-[#B8B8B5] hover:text-[#F87171] hover:bg-
-[#FEEAEA]
- p-[6px] rounded-lg transition-all"
+[#FEEAEA] p-[6px] rounded-lg transition-all"
                         title="Logout">
                         <svg class="w-[15px] h-[15px]" fill="none" stroke="currentColor" stroke-width="2"
                             viewBox="0 0 24
@@ -175,8 +175,7 @@ shrink-0"
 
         {{-- LANGKAH 8: Main content + Topbar --}}
 <div class="flex-1 flex flex-col min-w-0 lg:ml-[248px]">
-{{-- lg:ml-[248px] = geser konten ke kanan sebesar lebar sidebar di layar
-besar --}}
+{{-- lg:ml-[248px] = geser konten ke kanan sebesar lebar sidebar di layar besar --}}
  <header class="sticky top-0 z-30 bg-white border-b border-[#ECECE9]
  flex items-center gap-4 px-9 py-5">
  {{-- Tombol hamburger — hanya muncul di mobile (lg:hidden) --}}
@@ -184,8 +183,7 @@ besar --}}
  p-[6px] rounded-lg hover:bg-[#FAFAF8] transition￾colors"
  @click="sidebarOpen = true">
  <svg class="w-[18px] h-[18px]" fill="none"
- stroke="currentColor" stroke-width="2" viewBox="0 0 24
-24">
+ stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
  <line x1="3" y1="6" x2="21" y2="6"/>
  <line x1="3" y1="12" x2="21" y2="12"/>
  <line x1="3" y1="18" x2="21" y2="18"/>
@@ -259,6 +257,7 @@ text-lg leading-none">
  <main class="flex-1 p-9">
  @yield('content')
  </main>
+
 </div>
     </div>
     @stack('scripts')
